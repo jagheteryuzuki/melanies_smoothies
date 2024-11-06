@@ -33,6 +33,8 @@ if ingredients_list: # that makes a blank space if the ingredients_list is null
     ingredients_string = ''
     for fruit_chosen in ingredients_list: #each fruit_chosen in ingredients_list multiselect box: do everthing below this line that is indented
         ingredients_string += fruit_chosen + ' ' #+= means that add this to what is already in the variable, so each time the FOR loop is repeated
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
     
     #st.write(ingredients_string)
     
@@ -50,6 +52,4 @@ if ingredients_list: # that makes a blank space if the ingredients_list is null
         st.success('Your Smoothie is ordered!', icon="✅")
 
 import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-#st.text(fruityvice_response.json())
-fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
+
