@@ -48,3 +48,7 @@ if ingredients_list: # that makes a blank space if the ingredients_list is null
         session.sql(my_insert_stmt).collect()
 
         st.success('Your Smoothie is ordered!', icon="✅")
+
+import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
