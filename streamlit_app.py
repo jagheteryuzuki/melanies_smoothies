@@ -28,12 +28,14 @@ ingredients_list = st.multiselect(
 
 #to check by taling a closer look at what is contained in our ingredients list
 if ingredients_list: # that makes a blank space if the ingredients_list is null
-    st.write(ingredients_list)
-    st.text(ingredients_list)
+    #st.write(ingredients_list)
+    #st.text(ingredients_list)
     ingredients_string = ''
+    
     for fruit_chosen in ingredients_list: #each fruit_chosen in ingredients_list multiselect box: do everthing below this line that is indented
         ingredients_string += fruit_chosen + ' ' #+= means that add this to what is already in the variable, so each time the FOR loop is repeated
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        st.subheader(fruit_chosen + 'Nutrition Information')
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_chosen)
         fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
     
     #st.write(ingredients_string)
